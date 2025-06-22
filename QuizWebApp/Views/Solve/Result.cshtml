@@ -1,0 +1,10 @@
+﻿@model QuizWebApp.Models.UserQuizResult
+
+@{
+    ViewData["Title"] = "Wynik quizu";
+}
+
+<h2>Wynik quizu: @Model.Quiz.Title</h2>
+<p>Zdobyte punkty: @Model.Score</p>
+<p>Data ukończenia: @Model.CompletedAt.ToLocalTime()</p>
+

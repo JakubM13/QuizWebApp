@@ -1,0 +1,22 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "Statystyki quizu";
+}
+
+<h2>Statystyki quizu</h2>
+
+<p>Ukończyło: @Model.TotalCompleted osób</p>
+<p>Średni wynik: @Model.AverageScore</p>
+
+@foreach (var question in Model.Questions)
+{
+    <h4>@question.Content</h4>
+    <ul>
+        @foreach (var answer in question.Answers)
+        {
+            <li>@answer.Content - @answer.Percentage %</li>
+        }
+    </ul>
+}
+

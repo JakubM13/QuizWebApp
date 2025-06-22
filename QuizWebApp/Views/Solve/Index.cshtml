@@ -1,0 +1,44 @@
+﻿@model IEnumerable<QuizWebApp.Models.Quiz>
+
+@{
+    ViewData["Title"] = "Moje Quizy";
+}
+
+<h1>Moje Quizy</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Utwórz nowy quiz</a>
+</p>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Data utworzenia</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">
+        Nie masz jeszcze żadnych quizów. <a asp-action="Create">Utwórz pierwszy quiz</a>
+    </div>
+}
